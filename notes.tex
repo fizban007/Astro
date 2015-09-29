@@ -1,0 +1,239 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{*}{mps}{*}{} 
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{enumerate}
+% \usepackage{mystyle}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{fancyheadings}
+\usepackage{tensor}
+\usepackage{mathrsfs}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+%\usepackage{fullpage}
+\usepackage[left=0.75in, top=1.25in, right=0.75in, bottom=1.25in]{geometry}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\begin{document}
+
+\section{Magnetars}
+\label{sec:magnetars}
+
+\subsection{September 23}
+\label{sec:sept-23}
+
+Magnetars are pulsars with luminous X-ray emission and regular bursting behavior. The energy output is larger than the spin down power, which can only come from the magnetic field.
+
+The spectrum of magnetars vary, but usually it consists of a soft component centered around $1\,\mathrm{keV}$, and a hard component in the MeV range. The soft component can usually be fit with a quasi-thermal spectrum with two blackbodies, but the hard X-ray emission in particular is non-thermal and has to be of magnetospheric origin.
+
+The question is then, how is the energy released. If one simply work out the energistics, the total energy output of a magnetar is usually larger than or comparable to the total magnetic energy of the spin-down dipole field. So either the efficiency is very high, or the magnetic energy in the magnetosphere is replenished somehow. To be more precise, the dipole component of the magnetic field is not enough to provide the energy content of the bursts. Therefore people expect that there is much higher magnetic field inside the star, in configurations more convoluted than the dipole, for example a toroidally dominated configuration. There is some discussion about the maximum magnetic field you can have in a magnetar.
+
+The surroundings of a magnetar is filled with plasma. Since the field is so high (even the spindown dipole field), it is easy to fill the magnetosphere. If the crust is deformed by some differential rotation, there will be twist of magnetic field lines building up in the magnetosphere. Assuming there is $B_{\phi}$ in the magnetosphere already, and to zeroth order $E_{\parallel}$ is zero, then the twist will live forever and there will simply be enough electric current to sustain $\nabla\times B$. In this limit there will be no dissipation and no radiation. To get energy dissipation and observable emission, one needs nonzero $\boldsymbol{E}\cdot \boldsymbol{j}$.
+
+A better way to quantify the nonzero $\boldsymbol{E}$ is the voltage along the field lines, which is basically
+\begin{equation}
+    \label{eq:1}
+    \Phi_e = \int \boldsymbol{E}\cdot d\boldsymbol{l}
+\end{equation}
+where the integral is along the magnetic field line. The question is how the twist of magnetic field will evolve in time and what kind of radiation will it emit.
+
+The dynamics of the magnetosphere is govern by the following (simple) equations:
+\begin{align}
+  \frac{1}{c}\frac{\partial \boldsymbol{B}}{\partial t} &= -\nabla \times \boldsymbol{E} \\
+  \frac{1}{c}\frac{\partial \psi}{\partial t} &= \frac{\partial \Phi_{\parallel}}{\partial t}
+\end{align}
+where $\psi$ is the twist. The twist is defined as the accumulative angle that the field line builds up:
+\begin{equation}
+    \label{eq:2}
+    \psi = \int \frac{B_{\phi} d\boldsymbol{l}}{B r \sin\theta} = \int d\phi
+\end{equation}
+which is simply geometry. Now we let current flow along the magnetic field line, which must be maintained by a longitudinal voltage given by (\ref{eq:1}). If we consider to neighboring field lines and draw a closed loop by connecting the end points, then the rate of change of magnetic flux through the loop will be the circulation of $\boldsymbol{E}$ field along the loop. In the limit the two field lines are infinitely close, the voltage between end points is negligible, so
+\begin{equation}
+    \label{eq:3}
+    \frac{d\delta\Phi}{dt} = \int E_{\parallel}dl_1 - \int E_{\parallel} dl_2
+\end{equation}
+The point is that, this time derivative of the differential flux $\delta\Phi$ only depends on $B_{\phi}$. One can see that by (some argument which we will talk about again next time). In the end what we can find is that
+\begin{equation}
+    \label{eq:4}
+    \delta\Phi_{e} = \frac{\dot{\psi}(f)}{2\pi}\delta f
+\end{equation}
+
+\subsubsection{Discussion about the derivation}
+\label{sec:disc-about-deriv}
+
+There are two ways of deriving equation (\ref{eq:4}). Both start with considering a thin loop formed by points $P_1$, $P_2$ very close to each other on the star as footpoints of magnetic fieldlines, and the other footpoints $Q_1$ and $Q_2$ on the surface of the other hemisphere. The loop $\overline{P_1P_2Q_2Q_1}$ is what we want to integrate $E_{\parallel}$ along.
+
+The first way is outlined in Andrei's review (which I failed to outline). The other way is what we discussed a lot about after the lecture. The problem is about the definition of the surface over which magnetic flux $\delta\Phi$ is computed. Since the magnetic field lines are moving with time, the flux surface bound by the field lines change, therefore the total derivative $d\delta\Phi/dt$ has two contributions, one from varying $B$ field, and the other from changing of the area itself.
+
+If one considers a simple configuration of some $B$ field over an area, which is moved by $v\Delta t$, then we can find the expression for $d\Phi/dt$ by the following:
+\begin{align}
+  \Phi_t &= \int \boldsymbol{B}_t\cdot d\boldsymbol{S}_t \\
+  \Phi_{t + \Delta t} &= \int \boldsymbol{B}_{t + \Delta t}\cdot d\boldsymbol{S}_{t + \Delta t}
+\end{align}
+Now in order to form a closed surface, we have $S_t$, $S_{t + \Delta t}$, and the loop formed by the boundaries of $S_t$ and $S_{t + \Delta t}$, with width $v\Delta t$. Integrating $\boldsymbol{B}_t$ over this surface will give zero flux. So we have
+\begin{equation}
+    \label{eq:5}
+    0 = \int \boldsymbol{B}_t\cdot d\boldsymbol{S}_{t + \Delta t} - \int \boldsymbol{B}_t\cdot d\boldsymbol{S}_t + \oint \boldsymbol{B}_t\cdot (d\boldsymbol{l} \times \boldsymbol{v}\Delta t)
+\end{equation}
+where the last line integral is over the boundary of the area. Now we can see that the first two terms are almost $\Phi_{t + \Delta t} - \Phi_t$, only missing a $\Delta \boldsymbol{B}$ term, so we have
+\begin{equation}
+    \label{eq:6}
+    \Phi_{t + \Delta t} - \Phi_t = \int \Delta \boldsymbol{B}\cdot d\boldsymbol{S} - \oint \boldsymbol{B}\cdot (d\boldsymbol{l}\times \boldsymbol{v}\Delta t)
+\end{equation}
+Note that we now omit the subscript $t$ on the right hand side, because everything is evaluated at time $t$. Dividing by $\Delta t$ and using Stoke's Theorem we get
+\begin{equation}
+    \label{eq:7}
+    \frac{d\Phi}{dt} = \int \left[ \frac{\partial \boldsymbol{B}}{\partial t} - \nabla\times(\boldsymbol{v}\times \boldsymbol{B}) \right] d\boldsymbol{S}
+\end{equation}
+
+Now consider our problem of flux over the loop $\overline{P_1P_2Q_2Q_1}$. Since the boundaries $\overline{P_1Q_1}$ and $\overline{P_2Q_2}$ are along magnetic field lines, we can define the surface to be exactly along magnetic field lines. Therefore by construction $\Phi$ is identically zero. Since the field lines are moving, the time derivative of this $\Phi$ is given by equation (\ref{eq:7}). So by construction we have $d\Phi/dt = 0$:
+\begin{equation}
+    \begin{split}
+        \frac{d\Phi}{dt} = 0 &= \int \left[ \frac{\partial \boldsymbol{B}}{\partial t} - \nabla\times(\boldsymbol{v}\times \boldsymbol{B}) \right]\cdot d\boldsymbol{S} \\
+        &= -\int \nabla\times(\boldsymbol{E} + \boldsymbol{v}\times \boldsymbol{B})\cdot d\boldsymbol{S} \\
+        &= -\oint (\boldsymbol{E} + \boldsymbol{v}\times \boldsymbol{B})\cdot d\boldsymbol{l}
+    \end{split}
+\end{equation}
+In other words, the ``comoving electric field'' integrates to zero along the loop.
+
+If one proceeds with the last line, we have
+\begin{equation}
+    \label{eq:8}
+    \oint \boldsymbol{E}\cdot d\boldsymbol{l} = - \oint (\boldsymbol{v}\times \boldsymbol{B})\cdot d\boldsymbol{l}
+\end{equation}
+Consider the left hand side. If we make the assumption that the stellar surface is a good conductor, inside which $\boldsymbol{E}$ vanishes, then the integral of $\boldsymbol{E}$ along the loop becomes
+\begin{equation}
+    \label{eq:9}
+    \oint \boldsymbol{E}\cdot d\boldsymbol{l} = \int_{P_2Q_2}\boldsymbol{E}\cdot d\boldsymbol{l} - \int_{P_1Q_1}\boldsymbol{E}\cdot d\boldsymbol{l} = \int E_{\parallel} dl_2 - \int E_{\parallel} dl_2 = \delta \Phi_{e}
+\end{equation}
+which is the difference of the voltage drops along the adjacent field lines. The right hand side of equation (\ref{eq:8}) can be written as $-\oint (\boldsymbol{B}\times d\boldsymbol{l})\cdot \boldsymbol{v}$, which obviously vanishes along the field lines, and is nonzero only on the small segments on the stellar surface. If we further assume that the points $P_1$ and $P_2$ are fixed on the stellar surface, with only their other footpoints $Q_1$ and $Q_2$ moving due to evolving magnetic field, and the evolution of the footpoints is evolution of the twist $\psi$, then the right hand side of equation (\ref{eq:8}) can be written as
+\begin{equation}
+    \label{eq:10}
+    - \oint (\boldsymbol{v}\times \boldsymbol{B})\cdot d\boldsymbol{l} = - \int_{Q_1Q_2}(\boldsymbol{B}\times d\boldsymbol{l})\cdot \boldsymbol{v} = \int_{Q_2Q_1}(r_{\perp}\dot{\psi}B_p)dl
+\end{equation}
+Finally we identify the poloidal flux $\delta f = \int 2\pi r_{\perp}B_pdl$, so that we have
+\begin{equation}
+    \label{eq:11}
+    \delta \Phi_e = \frac{\dot{\psi}\delta f}{2\pi}
+\end{equation}
+which is exactly the result (\ref{eq:4}) Andrei obtained.
+
+A good extension of this formalism is that, if we assume finite conductivity inside the star, then it is very easy to modify the end result (\ref{eq:11}). We just need to add a resistive term to the integral of $\boldsymbol{E}$, which modifies $\delta \Phi_e$.
+
+\subsection{September 28}
+\label{sec:sept-28}
+
+To extend the discussion about the untwist problem. Apart from the discussion above, there is the original Andrei's formalism. The way is to consider the magnetic flux only across the meridional plane. The toroidal flux function across the same magnetic loop $\overline{P_1P_2Q_2Q_1}$ is
+\begin{equation}
+    \label{eq:12}
+    F = \int B_{\phi}dl ds = \int \frac{B_{\phi}dl\delta f}{2\pi r_{\perp}B_{p}} = \frac{\psi \delta f}{2\pi}
+\end{equation}
+where $dl$ is along the field line and $ds$ is across the field line. This result is a geometrical identity
+\begin{equation}
+    \label{eq:13}
+    \psi = \frac{1}{2\pi}\frac{\partial F}{\partial f}
+\end{equation}
+To get the original result we take the derivative of this equation with respect to time
+\begin{equation}
+    \label{eq:14}
+    \dot{\psi} = \frac{1}{2\pi}\partial_f\partial_tF = \frac{1}{2\pi}\partial_f\frac{dF}{dt} 
+\end{equation}
+The last equality is because $F$ is a function of $f$ and $t$, but the time evolution of $F$ is due to the breathing of the field lines, so the time derivative of $F$ is simply the total time derivative. Now we have
+\begin{equation}
+    \label{eq:15}
+    \frac{dF}{dt} = \oint \boldsymbol{E}'_p\cdot d\boldsymbol{l}_p = \oint \boldsymbol{E}\cdot d\boldsymbol{l} = \delta\Phi_e
+\end{equation}
+where $E'$ means the electric field in the frame comoving with the magnetic field lines.
+
+A crucial argument to this method is that, to justify the last equation that our integration of $E_{\parallel}$ is correct, we need $E'_{\phi} = 0$. This is true because if we decompose the magnetic field into poloidal and toroidal components
+\begin{equation}
+    \label{eq:16}
+    \boldsymbol{B} = \frac{\nabla f\times \boldsymbol{e}_{\phi}}{2\pi} + B_{\phi}\boldsymbol{e}_{\phi}
+\end{equation}
+by the ``frozen-in condition'' we have
+\begin{equation}
+    \label{eq:17}
+    \frac{\partial \boldsymbol{B}}{\partial t} = \nabla\times(\boldsymbol{v}\times \boldsymbol{B})
+\end{equation}
+therefore for the $\boldsymbol{v}_p$ of the field line in the poloidal component we can find $E'_{\phi}$ such that
+\begin{equation}
+    \label{eq:18}
+    \partial_t\boldsymbol{E}'_{\phi} = \partial_t\boldsymbol{E} + \boldsymbol{v}_p\times \boldsymbol{B}_p = 0
+\end{equation}
+
+\subsubsection{Discharge}
+\label{sec:discharge}
+
+The next logical step is to figure out what controls the voltage drop. That is connected to the discharge mechanism. The equation (\ref{eq:11}) tells us that (filling the missing $c$ back)
+\begin{equation}
+    \label{eq:19}
+    \dot{\psi} = 2\pi c\frac{\partial \Phi_e}{\partial f}
+\end{equation}
+Therefore the larger the voltage, the faster the untwisting. (Is this really true? It's only the derivative of voltage entering the equation.)
+
+Consider axisymmetric configuration, the total poloidal current $I$ over a field line bundle is the circulation of $B_{\phi}$. The first question is that whether this current is possible to be sustained by particles extracted from the surface. The picture by Thompson and Duncan is that the particles supplied from the surface is sufficient to carry the current. To work out this problem one needs to consider gravity.
+
+The minimum number density of particles to conduct a certain current is given by $n_{min} = j/ec$. The voltage produced by missing this amount of charge is given by
+\begin{equation}
+    \label{eq:20}
+    \Phi_{e} \sim 4\pi e n_{min}R^2 = 4\pi R^2\frac{j}{c}
+\end{equation}
+This is loosely applying the Maxwell equation
+\begin{equation}
+    \label{eq:21}
+    \nabla\times \boldsymbol{B} = \frac{4\pi}{c}\boldsymbol{j} + \frac{1}{c}\frac{\partial \boldsymbol{E}}{\partial t}
+\end{equation}
+by assuming that $\boldsymbol{B}$ is extremely large, and that $\nabla\times \boldsymbol{B}$ is given. The plasma has to figure out a way to sustain this curl of $\boldsymbol{B}$, which is the current the field demands, and we call it $\boldsymbol{j}_{B} = n_{min}ec$. If we have vacuum instead of this amount of charge, and we want to find the characteristic electric field associated to this missing amount of charge is given by equation (\ref{eq:20}).
+
+Another way (better way) to look at the equation (\ref{eq:21}) is
+\begin{equation}
+    \label{eq:22}
+    \frac{\partial E_{\parallel}}{\partial t} = 4\pi(j_B - j)
+\end{equation}
+so it says if we don't have the desired $j$, the electric field grows. Let's look at the time scale associated with the missing $j$. Over a characteristic time $\tau$, assuming initially we have some plasma but with $v = 0$, we have
+\begin{align}
+  \frac{E_{\parallel}}{\tau} &\sim 4\pi (j_B - j) \\
+  \tau e E_{\parallel} &\sim mv \sim mj/ne
+\end{align}
+putting these equations together we have
+\begin{equation}
+    \label{eq:23}
+    \tau^2 \sim \frac{m j}{4\pi e^2n(j_B - j)} = \frac{1}{\omega_p^2}\frac{j}{j_B - j}
+\end{equation}
+So the time scale is comparable to the plasma time scale, which is very short. The morale is that the plasma responds to missing current very quickly, so electric field develops very quickly in response to any mismatch of $j_{B}$ and $j$. If we estimate the plasma frequency
+\begin{equation}
+    \label{eq:24}
+    \omega_p^2 = \frac{4\pi e^2n}{m_e} \sim \frac{4\pi e j}{m_ec} \sim \frac{eB}{m_eR}, \quad \omega_{p} \sim 10^{13}B_{15}^{1/2}\,\mathrm{rad/s}
+\end{equation}
+which is much smaller compared to the light crossing time of the system.
+
+If we look for a steady state where some $E_{\parallel}$ overcomes gravity to pull enough charges from the star to conduct the current, we will find that it is actually impossible. The continuity equations for the charges, together with divergence of $B$ being zero, we have $\nabla\cdot \boldsymbol{j}_{\pm} = \nabla\cdot \boldsymbol{B} = 0$ because the $\partial_t(n_{\pm}e)$ term in the continuity equation is zero. Because $j$ is parallel to $B$, let $\boldsymbol{j} = \alpha \boldsymbol{B}$, we have
+\begin{equation}
+    \label{eq:25}
+    \nabla\cdot \boldsymbol{j}_{\pm} = (\boldsymbol{B}\cdot\nabla)\alpha = \frac{\partial}{\partial l}\frac{j_{\pm}}{B}
+\end{equation}
+so $\alpha$ is constant along the field line. This means that $n_{\pm}v_{\pm}/B$ is constant along field lines, so if $n_+ = n_-$ in the atmosphere, we have
+\begin{equation}
+    \label{eq:26}
+    \frac{j_+}{j_-} = -\frac{v_+}{v_-} = \mathrm{const}
+\end{equation}
+The argument is that, if there is some $E_{\parallel}$ that pulls out the particles from the surface self-consistently, then you can't have $v_+/v_-$ to be constant everywhere. For example $v_+$ is zero at one footpoint, with $v_-$ nonzero, but the opposite is true at the other footpoint.
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
