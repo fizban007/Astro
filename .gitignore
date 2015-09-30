@@ -4,3 +4,4 @@
 *.gz
 *.fdb_latexmk
 *.fls
+*.el
