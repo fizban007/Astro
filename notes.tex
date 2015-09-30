@@ -229,6 +229,107 @@ so $\alpha$ is constant along the field line. This means that $n_{\pm}v_{\pm}/B$
 \end{equation}
 The argument is that, if there is some $E_{\parallel}$ that pulls out the particles from the surface self-consistently, then you can't have $v_+/v_-$ to be constant everywhere. For example $v_+$ is zero at one footpoint, with $v_-$ nonzero, but the opposite is true at the other footpoint.
 
+\subsection{September 30}
+\label{sec:sept-30}
+
+\subsubsection{About annihilation}
+\label{sec:annihilation}
+
+At the end of last meeting there was a question about the possibility of pair annihilation in the current bundle. Let's estimate the particle density in more detail here. Consider a twisted dipole magnetosphere. On a given dipole field line the $r$ and $\theta$ are related by $r = R_\mathrm{max}\sin^2\theta$. Given a twist $\psi$, the current flowing will be (assuming $\psi$ is relatively small, $\psi < 1$, so that the global field is still approximately dipole)
+\begin{equation}
+    \label{eq:27}
+    j = \frac{c\psi B}{4\pi R_\mathrm{max}},\quad n_e = \frac{\psi B}{4\pi e R_\mathrm{max}}
+\end{equation}
+The flux function for dipole field is simply $f = f_\mathrm{max}\sin^2\theta$. This is relatively simple to compute since one can just integrate the $B$ field flux over the surface up to angle $\theta$.
+
+If we write $u = f/f_\mathrm{max} = \sin^2\theta$, which is essentially rescaled $f$, then we can write
+\begin{equation}
+    \label{eq:28}
+    j = \frac{R B}{2\pi \mu} \frac{\partial I}{\partial u},\quad I = \frac{\psi c\mu u^2}{4R^2}
+\end{equation}
+
+From equation \eqref{eq:27} we can get a numerical value of then particle density:
+\begin{equation}
+    \label{eq:29}
+    n_e = \psi \times 10^{16}\frac{B}{B_Q}\left( \frac{R_6}{R_\mathrm{max}} \right) \mathrm{cm}^{-3}
+\end{equation}
+where $B_Q$ is the critical field $B_Q = 4.4\times 10^{13}\,\mathrm{G}$.
+
+Now we consider pair annihilation. An electron-positron pair can collide and turn into a pair of photons. The cross section will be inversely proportional to their relative velocity, and the rate of annihilation will be proportional to the cross section times $v$, so the rate of annihilation in weak field ($B/B_Q\ll 1$) and vacuum will be
+\begin{equation}
+    \label{eq:30}
+    \mathcal{R}_{0}^{(2)} = \sigma_\mathrm{ann}v \sim 1.5\times 10^{-14} \mathrm{cm^3/s} \sim 0.1\sigma_Tc
+\end{equation}
+
+However, when $B$ is not far smaller than $B_Q$, the formula needs to be changed. If $B \gtrsim 2B_Q$, we have
+\begin{equation}
+    \label{eq:31}
+    \mathcal{R}^{(2)} = \frac{1.74 \mathcal{R}_0}{b^3}\exp \left( -\frac{2}{b} \right)
+\end{equation}
+where $b = B/B_Q$. So in strong field this rate is suppressed by a coefficient of $b^{-3}$. This was first done by \href{http://adsabs.harvard.edu/abs/1979PhRvL..42...79W}{Wunner} in 1979. There are a few more papers, e.g. \href{http://adsabs.harvard.edu/abs/1987Ap%26SS.138....1K}{(Kaminker et. al. 1987)}.
+
+In strong field there is an additional process, which is 1-photon annihilation, which is one pair annihilating into a single photon. Normally this is not allowed due to conservation of energy and momentum, but the magnetic field can take the extra momentum. Wunner reported the result for the ratio between 1-photon and 2-photon annihilation:
+\begin{equation}
+    \label{eq:32}
+    \frac{\mathcal{R}^{(1)}}{\mathcal{R}^{(2)}} = 496b^{2}
+\end{equation}
+So 1-photon annihilation is much more efficient than the 2-photon annihilation in strong field. The overall rate is dominated by 1-photon annihilation, and it scales with $b^{-1}$ when $B/B_Q>1$.
+
+The most important region for pair annihilation is when $b\gtrsim 1$ because when $B$ is too large the rate is suppressed. The change of $n_\pm$ due to annihilation can be estimated as:
+\begin{equation}
+    \label{eq:33}
+    \frac{\Delta n_\pm}{n_\pm} \sim \frac{r}{c}\frac{\dot{n}_\mathrm{ann}}{n_\pm} \sim \frac{r}{c}\mathcal{R}n_e \sim \frac{0.1\psi}{R_7/R_{max}}
+\end{equation}
+where $n_e$ is given by equation \eqref{eq:29}.
+
+\subsubsection{Double layer}
+\label{sec:double-layer}
+
+Consider a 1D box with conductor at both ends. If one pushes some current $j$ at the ends of the box, and we have plenty of plasma in the box, then electric field will be induced and pushes the plasma to conduct the current $j$. However for a neutron star, originally we don't have much plasma around the star, except in a very thin atmosphere near the surface. The scale height of the atmosphere should be
+\begin{equation}
+    \label{eq:34}
+    h \sim \frac{kT}{gm_p} \sim 1\,\mathrm{cm}
+\end{equation}
+where $g$ is the surface gravity of the neutron star $g \sim GM/R^2 \sim 10^{14}cm/s^2$. This gravity is very weak. The electric field that one needs to offset this gravity is orders of magnitude less than $B$. As discussed last time, there is no self-consistent solution for a steady electric field to help conduct the current required by the boundary condition. The result is that the system will relax to what is called a ``double layer''.
+
+Let's assume the current is conducted by negative and positive charge $j = j_{-} + j_{+}$, and that $j_+ = j_-$. So we have
+\begin{equation}
+    \label{eq:35}
+    n_{\pm} = \frac{j_{\pm}}{ev_{\pm}} = \frac{j}{2ev_{\pm}}
+\end{equation}
+Near the anode $v_-\approx c$ while $v_+\sim 0$ which means $n_+\gg n_-$, so the charge density is $\rho \sim en_{+}$. High density translates to high electric field due to Gauss's law $4\pi\rho = \partial_zE$, and the charges will quickly accelerate and charge density quickly decreases. Near the surface we have $E_z \sim \rho z \sim jz/v$. The work done by the electric field will be
+\begin{equation}
+    \label{eq:36}
+    zEe \sim \frac{mv^2}{2}, \quad v(z) \sim \sqrt[3]{\frac{ejz^2}{m}}
+\end{equation}
+So velocity is proportional to $z^{2/3}$, and $\rho \sim e n_+ \sim z^{-2/3}$. This holds up to the point where $v \sim c$. At this point $v$ stops growing, and $n_+$ should match $n_-$ so that $\rho \sim 0$. For relativistic case we can find that
+\begin{equation}
+    \label{eq:37}
+    \gamma \sim \frac{ejz^2}{mc^{3}}
+\end{equation}
+The thickness of the acceleration layer, which is the $z$ position where $v$ becomes $c$ can be found by
+\begin{equation}
+    \label{eq:38}
+    z^2\sim \frac{mc^2ce}{e^2j} \sim c^2\frac{m}{n_0e^2} \sim c^2/\omega_{p}^2
+\end{equation}
+where $n_0$ is a characteristic number density in the layer. The solution is that opposite charges are concentrated at the two ends of the box, and provide the acceleration electric field in between. The charges are highly concentrated in a small scale comparable to the plasma skin depth. There is huge electric field in between, which can be estimated as
+\begin{equation}
+    \label{eq:39}
+    E \sim 4\pi\rho z \sim \frac{4\pi j}{\omega_p}
+\end{equation}
+we can find the potential corresponding to this electric field
+\begin{equation}
+    \label{eq:40}
+    \frac{e\Phi_e}{mc^2} = \frac{4\pi j eR}{\omega_pmc^2} = \frac{\omega_p}{c}R = \frac{R}{\lambda_p}
+\end{equation}
+This voltage is huge. We estimated $\omega_p\sim 10^{13}\,\mathrm{rad/s}$, so that this voltage is around $10^9$. This is the double layer solution found by \href{http://adsabs.harvard.edu/abs/1982Ap%26SS..87...21C}{Carlqvist} in 1982.
+
+Note that if we turn off gravity then with any finite temperature we don't have this structure. At any given temperature then scale height of the atmosphere is infinite, so the particles can freely stream out from the star to conduct the current. Even with gravity, if it is weak enough, in other words if the density at the top of the scale height is sufficient to conduct the current
+\begin{equation}
+    \label{eq:41}
+    \frac{n_\mathrm{atm}}{n_0} = \frac{n_\mathrm{atm}^0\exp(-z/h)}{j/ec} > 1
+\end{equation}
+then it is possible to conduct the current without forming the double layer.
 
 \end{document}
 
