@@ -331,6 +331,92 @@ Note that if we turn off gravity then with any finite temperature we don't have 
 \end{equation}
 then it is possible to conduct the current without forming the double layer.
 
+\subsection{October 5}
+\label{sec:oct-5}
+
+We established that if the current can't be conducted, a double layer will be formed with large electric field. The electric field will accelerate particles which induces pair creation.
+
+\subsubsection{Resonant scattering}
+\label{sec:res-scatter}
+
+In magnetars the dominant pair creation process is resonant scattering, as opposed to curvature radiation in standard pulsars. In the former case an electron moving at Lorentz factor $\gamma$ scatters a seed photon at energy $\hbar\omega$ to energy $\gamma^2\hbar\omega$, which then convert to an electron-positron pair. In the later the particles move along curved field lines and emit curvature radiation at energy $\hbar c\gamma^3/R_c$. The reason that curvature radiation is subdominant (or straight negligible) in magnetars is that $\gamma$ doesn't reach high enough values. For curvature radiation to be high enough energy to produce pairs, $\gamma$ needs to be on the order of $\gtrsim 10^6$, whereas for resonant scattering the Lorentz factor required is much lower, at the order of $\sim 10^3$.
+
+The physics of resonant scattering is simply the interaction of an oscillating particle in magnetic field interacting with radiation. Consider an oscillator under external harmonic force, the equation of motion is
+\begin{equation}
+    \label{eq:42}
+    \ddot{x} + \omega_0^2x = \frac{eE}{m}
+\end{equation}
+using Fourier transform we can find
+\begin{equation}
+    \label{eq:43}
+    x = \frac{eE}{m(\omega_0^2 - \omega^2)}, \quad \ddot{x} = \frac{eE\omega^2}{m(\omega_0^2 - \omega^2)}
+\end{equation}
+In this kind of classic scattering cross section, we have near resonance
+\begin{equation}
+    \label{eq:44}
+    \frac{d\sigma}{d\Omega'} = r_e^2\frac{\omega^2}{(\omega - \omega_B)^2} \left| \boldsymbol{e}^{*}\cdot \boldsymbol{e}_- \right|^2 \left| \boldsymbol{e}'^{*}\cdot \boldsymbol{e}_- \right|^2
+\end{equation}
+where $r_e$ is the classical electron radius and $\omega_B = eB/m_ec$. The factor $r_e^2$ enters because this is to some extent like a Thomson scattering with incoming and outgoing photons.
+$\boldsymbol{e}$ and $\boldsymbol{e}'$ are the polarization vectors of the incoming and outgoing waves, and $\boldsymbol{e}_-$ is the vector corresponding to the electron orbit direction.
+
+This equation \eqref{eq:44} is singular when $\omega = \omega_B$ which is exactly the case we are interested in. The way to view what is happening at resonance is to look at quantum mechanically. We can think of the scattering as a two-step process: the electron first absorbs a photon, and then spontaneously emits a photon. The classical cross section needs to be modified by a factor of $\Gamma$ which is related to the lifetime of the electron in the excited state:
+\begin{equation}
+    \label{eq:46}
+    \frac{\omega^2}{(\omega - \omega_B)^2} \longrightarrow \frac{\omega^2}{(\omega - \omega_B)^2 + (\Gamma/2)^2}
+\end{equation}
+If we define $B_Q = m_e^2c^3/\hbar e$ as the critical field, the energy difference between the lowest and second lowest Landau levels is $\hbar\omega_B$ when $B\ll B_Q$, and it becomes
+\begin{equation}
+    \label{eq:45}
+    \left[ \left( 1 + 2\frac{B}{B_Q} \right)^{1/2} - 1  \right] m_ec^2
+\end{equation}
+The correction $\Gamma$ will be given by
+\begin{equation}
+    \label{eq:47}
+    \frac{\Gamma}{\omega_B} = \frac{4}{3}\alpha\frac{B}{B_Q}
+\end{equation}
+which was found in \href{http://adsabs.harvard.edu/abs/1982A%26A...115...90H}{(Herold et. al. 1982)}. When $\hbar\omega_B$ becomes comparable to $m_ec^2$ the formula \eqref{eq:46} needs to be changed, which was considered in \href{http://adsabs.harvard.edu/abs/1979PhRvD..19.2868H}{(Herold 1979)}.
+
+If we plug equation \eqref{eq:47} into equation \eqref{eq:46} and take the limit $\Gamma \to 0$, we get
+\begin{equation}
+    \label{eq:48}
+    \frac{1}{(\omega - \omega_B)^2 + (\Gamma/2)^2}\longrightarrow\frac{2\pi}{\Gamma}\delta(\omega - \omega_B)
+\end{equation}
+so obviously the cross section peaks at $\omega = \omega_B$.
+
+If we define $\mu = \cos\theta$ and $\mu' = \cos\theta'$ where $\theta$ and $\theta'$ are angles of incoming and outgoing photons with respect to the magnetic field, then the cross section should be written as (if the electron is at rest)
+\begin{equation}
+    \label{eq:49}
+    \frac{d\sigma}{d\mu'} = 3\pi^2r_ec\delta(\omega - \omega_B)\left| \boldsymbol{e}^{*}\cdot \boldsymbol{e}_\pm \right|^2 \left| \boldsymbol{e}'^{*}\cdot \boldsymbol{e}_\pm \right|^2
+\end{equation}
+
+We can define two linear polarizations for a photon in the magnetic field, which have slightly different propagation speeds. Given $\boldsymbol{B}$ and $\boldsymbol{k}$ vectors, we can have $\boldsymbol{E}$ vector in the plane of $\boldsymbol{B}$-$\boldsymbol{k}$, which we call ``O'' mode, or parallel mode, and $\boldsymbol{E}$ perpendicular to the plane of $\boldsymbol{B}$-$\boldsymbol{k}$, which we call ``E'' mode, or perpendicular mode. The refraction indices of these two modes are different:
+\begin{align}
+    \label{eq:50}
+  N_{\perp} &= 1 + \frac{2\alpha}{45\pi} \left( \frac{B}{B_Q} \right)^2\sin^2\theta \\
+  N_{\parallel} &= 1 + \frac{7\alpha}{90\pi} \left( \frac{B}{B_Q} \right)^2\sin^2\theta
+\end{align}
+If we integrate equation \eqref{eq:49} over $\theta'$ we can find the total cross section
+\begin{equation}
+    \label{eq:51}
+    \sigma_\mathrm{tot} = \sum_{\boldsymbol{e}'}\int_{-1}^1\frac{d\sigma}{d\mu'}d\mu' = 2\pi^2 r_e c\xi \delta(\omega - \omega_B)
+\end{equation}
+where $\xi$ is 1 for perpendicular mode and $\xi$ is equal to $\mu^2$ for parallel mode. This is due to pure geometry and come from the $\boldsymbol{e}\cdot \boldsymbol{e}_{\pm}$ factor. This final result applies not only for $B\ll B_Q$ but also for $B$ comparable to $B_Q$. If one wants we can convolute this result with some frequency distribution, and we can find a rate for resonant scattering
+\begin{equation}
+    \label{eq:52}
+    \dot{n}_\mathrm{res} \sim n_e n_\mathrm{ph}\sigma^\mathrm{res}_\mathrm{eff}c
+\end{equation}
+where
+\begin{equation}
+    \label{eq:53}
+    \sigma^\mathrm{res}_\mathrm{eff} \approx \frac{2\pi^2r_ec}{\omega_B}
+\end{equation}
+compare this with Thomson cross section
+\begin{equation}
+    \label{eq:54}
+    \sigma_T \approx \frac{8\pi}{3}r_e^{2}
+\end{equation}
+so for $B$ larger than critical field this resonant cross section is larger than the normal Thomson cross section.
+
 \end{document}
 
 
