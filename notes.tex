@@ -20,6 +20,7 @@
 \usetikzlibrary{decorations.markings}
 %\usepackage{fullpage}
 \usepackage[left=0.75in, top=1.25in, right=0.75in, bottom=1.25in]{geometry}
+\newcommand{\lambdabar}{{\mkern0.75mu\mathchar '26\mkern -9.75mu\lambda}}
 
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
@@ -376,7 +377,7 @@ The correction $\Gamma$ will be given by
 \end{equation}
 which was found in \href{http://adsabs.harvard.edu/abs/1982A%26A...115...90H}{(Herold et. al. 1982)}. When $\hbar\omega_B$ becomes comparable to $m_ec^2$ the formula \eqref{eq:46} needs to be changed, which was considered in \href{http://adsabs.harvard.edu/abs/1979PhRvD..19.2868H}{(Herold 1979)}.
 
-If we plug equation \eqref{eq:47} into equation \eqref{eq:46} and take the limit $\Gamma \to 0$, we get
+If we plug equation \eqref{eq:47} into equation \eqref{eq:46} and take the limit $\Gamma \to 0$ (or equivalently $\Gamma\ll \omega_B$), we get
 \begin{equation}
     \label{eq:48}
     \frac{1}{(\omega - \omega_B)^2 + (\Gamma/2)^2}\longrightarrow\frac{2\pi}{\Gamma}\delta(\omega - \omega_B)
@@ -395,12 +396,12 @@ We can define two linear polarizations for a photon in the magnetic field, which
   N_{\perp} &= 1 + \frac{2\alpha}{45\pi} \left( \frac{B}{B_Q} \right)^2\sin^2\theta \\
   N_{\parallel} &= 1 + \frac{7\alpha}{90\pi} \left( \frac{B}{B_Q} \right)^2\sin^2\theta
 \end{align}
-If we integrate equation \eqref{eq:49} over $\theta'$ we can find the total cross section
+If we integrate equation \eqref{eq:49} over $\theta'$ and sum over outgoing photon polarizations we can find the total cross section
 \begin{equation}
     \label{eq:51}
     \sigma_\mathrm{tot} = \sum_{\boldsymbol{e}'}\int_{-1}^1\frac{d\sigma}{d\mu'}d\mu' = 2\pi^2 r_e c\xi \delta(\omega - \omega_B)
 \end{equation}
-where $\xi$ is 1 for perpendicular mode and $\xi$ is equal to $\mu^2$ for parallel mode. This is due to pure geometry and come from the $\boldsymbol{e}\cdot \boldsymbol{e}_{\pm}$ factor. This final result applies not only for $B\ll B_Q$ but also for $B$ comparable to $B_Q$. If one wants we can convolute this result with some frequency distribution, and we can find a rate for resonant scattering
+where $\xi$ is 1 for perpendicular mode and $\xi$ is equal to $\mu^2$ for parallel mode. This is due to pure geometry and come from the $\boldsymbol{e}\cdot \boldsymbol{e}_{\pm}$ factor. This final result applies not only for $B\ll B_Q$ but also for $B$ comparable to or larger than $B_Q$, if the incoming photon is along the $B$ field. If the photon is at some angle with respect to the field then the cross section needs to be corrected. If one wants we can convolute this result with some frequency distribution, and we can find a rate for resonant scattering
 \begin{equation}
     \label{eq:52}
     \dot{n}_\mathrm{res} \sim n_e n_\mathrm{ph}\sigma^\mathrm{res}_\mathrm{eff}c
@@ -416,6 +417,97 @@ compare this with Thomson cross section
     \sigma_T \approx \frac{8\pi}{3}r_e^{2}
 \end{equation}
 so for $B$ larger than critical field this resonant cross section is larger than the normal Thomson cross section.
+
+\subsection{October 7}
+\label{sec:oct-7}
+
+If one takes equation \eqref{eq:51} and rewrite equation \eqref{eq:49} we can write
+\begin{equation}
+    \label{eq:55}
+    \frac{d\sigma}{d\mu'} = \sigma_\mathrm{tot} \frac{3}{8}\xi'
+\end{equation}
+and the parallel polarization takes 3/4 of the outgoing power.
+
+Since the result \eqref{eq:51} does not depend on the smallness of $B/B_Q$, it is valid even for $b> 1$, which is puzzling because in high magnetic field the Landau level gets corrected as given by equation \eqref{eq:45}. Nevertheless in the formula the resonance condition is still $\omega = \omega_B$. This is because recoil in scattering. Consider a photon coming along the $B$ field scatter off an electron. We define $\epsilon_B = \sqrt{1 + 2b}$, which is the dimensionless Landau energy. Let $\epsilon_0 = E_{\gamma}/m_ec^2$ be the initial photon energy in the electron rest frame. The first part of the scattering process is absorption of the photon, giving total energy $\epsilon_0 + 1$ in the initial rest frame of the electron. After absorption, the electron is now moving with some Lorentz factor $\gamma$, and we have conservation of both energy and momentum:
+\begin{equation}
+    \label{eq:56}
+    \epsilon_0 + 1 = \gamma\epsilon_B,\quad \epsilon_0 = \gamma\beta\epsilon_B
+\end{equation}
+where the equations are written in the initial rest frame of the electron. One can solve this set of equations for $\epsilon_0$ and $\gamma$ since they tell us the resonance condition, and the recoil
+energy of the electron:
+\begin{equation}
+    \label{eq:58}
+    \beta = \frac{b}{1 + b},\quad \gamma = \frac{1 + b}{\epsilon_B}, \quad \epsilon_0 = b
+\end{equation}
+Note again that this is assuming the photon comes in along the magnetic field. In this case the resonance condition is simply $\omega = \omega_B$.
+
+\subsubsection{Discharge mechanism}
+\label{sec:discharge-mech}
+
+We started this discussion of resonance scattering because we wanted to see how the particles in the double layer configuration produce pairs. In that physical situation, the accelerated electrons in moving along the $B$ field will upscatter photons from the stellar surface and undergo the resonance scattering process to produce higher energy photons which are capable of producing electron-positron pairs.
+
+Given what we've calculated so far, we want to compute the free path of an electron at Lorentz factor $\gamma$. The scattering rate per second is an integration:
+\begin{equation}
+    \label{eq:59}
+    \dot{N}_\mathrm{sc} = \int d\Omega \int d\omega \frac{I(\hbar\omega)}{\hbar\omega}\sigma_\mathrm{tot}
+\end{equation}
+where $I$ is the intensity of photons, namely the energy flux of photons per area at a given solid angle, so $I/\hbar\omega$ is the number flux across unit area. Note that our $\sigma_\mathrm{tot}$ was derived in the rest frame of the electron, whereas we need the cross section in the lab frame. We need to transform this cross section by a factor of $(1 - \beta\mu)$. The cross section is suppressed when the photon is traveling at the same direction as the electron, when $\mu \sim 1$. Another correction is for $\omega$ in the rest frame of the electron, which is related to the lab frame photon frequency by
+\begin{equation}
+    \label{eq:57}
+    \tilde{\omega} = \gamma(1 - \beta\mu)\omega
+\end{equation}
+where $\tilde{\omega}$ is the Lorentz transformed frequency in the electron rest frame. In the rest frame of the electron, due to relativistic effect, the photon is either coming from the front or the back of the electron along the field line, so $\mu$ will be either 1 or $-1$, and $\xi \sim 1$. So we can carry out the integral:
+\begin{equation}
+    \label{eq:60}
+    \begin{split}
+        \dot{N}_\mathrm{sc} &= \int d\Omega \int d\omega 2\pi^2 r_ec\frac{\delta(\omega - \tilde{\omega}_B)}{|d\tilde{\omega}/d\omega|}(1 - \beta\mu)\frac{I}{\hbar\omega} \\
+        &= \int d\Omega \int d\omega 2\pi^2 r_ec \delta \left( \omega - \frac{\omega_B}{\gamma(1 - \beta\mu)} \right)\frac{I}{\gamma\hbar\omega} \\
+        &= \int d\Omega \frac{2\pi^2 r_ec}{\gamma}\frac{I(\omega_\mathrm{res})}{\hbar\omega_\mathrm{res}}
+    \end{split}
+\end{equation}
+where $\omega_\mathrm{res}$ is the boosted $\omega_B$:
+\begin{equation}
+    \label{eq:61}
+    \omega_\mathrm{res} = \frac{\omega_B}{\gamma(1 - \beta\mu)}
+\end{equation}
+Sufficiently far away from the star, the star subtends only a relatively small solid angle, and we can finish the integral and get
+\begin{equation}
+    \label{eq:62}
+    \dot{N}_\mathrm{sc} = \frac{2\pi^3r_ec}{x^2\gamma}\frac{I(\omega_\mathrm{res})}{\omega_\mathrm{res}}
+\end{equation}
+where $x = r/R_{*}$. The radiation from the star is predominantly in perpendicular mode, and assuming Planck spectrum we have
+\begin{equation}
+    \label{eq:63}
+    I_{\perp} = \frac{\hbar\omega^3}{8\pi^3c^2 \left[ \exp \left( \hbar\omega/kT - 1 \right) \right]}
+\end{equation}
+so we can write the rate as
+\begin{equation}
+    \label{eq:64}
+    \dot{N}_\mathrm{sc} = \frac{\alpha\Theta c}{4x^2\gamma \lambdabar}\frac{g(y)}{y}
+\end{equation}
+where $\Theta = kT/m_ec^2$, $g(y) = y^3/(e^y - 1)$, and $y = h\omega_\mathrm{res}/kT$, and $\lambdabar$ is the electron Compton wavelength. If we multiply this with the characteristic time which is $t \sim r/c$, then the total number of scattering is huge because of a factor of $R/\lambdabar$ which gives the multiplicity. For typical magnetar parameters this will give about $10^5$.
+
+Last question we want to ask is how the momentum changes due to scattering. The momentum change of an electron $\Delta p$ due to scattering in the lab frame is related to the momentum change in the rest frame of the particle $\Delta \tilde{p}$ by $\Delta p = \gamma \Delta \tilde{p}$. In the rest frame of the electron the incoming photon has a well-defined momentum $\hbar\omega_B$ but on average the outgoing photon has zero momentum because it can go in any direction. So on average the momentum that is given to the electron in the rest frame by the photon is
+\begin{equation}
+    \label{eq:65}
+    \Delta \tilde{p} = \frac{\hbar\omega_B}{c}\tilde{\mu}
+\end{equation}
+where $\tilde{\mu}$ is the transformed $\mu$ into the electron rest frame
+\begin{equation}
+    \label{eq:68}
+    \tilde{\mu} = \frac{\mu - \beta}{1 - \beta\mu}
+\end{equation}
+where $\mu$ is the angle of photon with respect to the magnetic field line. The momentum change to the electron in the lab frame is then $\Delta p = \gamma \Delta \tilde{p}$. If we multiply this to the scattering rate then we can get a force
+\begin{equation}
+    \label{eq:66}
+    \mathcal{F} = \dot{N}_\mathrm{sc}\Delta p \propto \gamma(\mu - \beta)
+\end{equation}
+where $\mu$ is cosine of the angle between the photon coming from the star and the direction of the magnetic field. So the relationship of $\mu$ and $\beta$ of the electron determines the direction of the force. For most of the relativistic electrons this creates a huge drag force on the particles. The drag coefficient
+\begin{equation}
+    \label{eq:67}
+    \mathcal{D} = \frac{r}{c}\frac{1}{p}\frac{dp}{dt} \gg 1
+\end{equation}
+
 
 \end{document}
 
