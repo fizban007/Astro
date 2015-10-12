@@ -239,7 +239,7 @@ The argument is that, if there is some $E_{\parallel}$ that pulls out the partic
 At the end of last meeting there was a question about the possibility of pair annihilation in the current bundle. Let's estimate the particle density in more detail here. Consider a twisted dipole magnetosphere. On a given dipole field line the $r$ and $\theta$ are related by $r = R_\mathrm{max}\sin^2\theta$. Given a twist $\psi$, the current flowing will be (assuming $\psi$ is relatively small, $\psi < 1$, so that the global field is still approximately dipole)
 \begin{equation}
     \label{eq:27}
-    j = \frac{c\psi B}{4\pi R_\mathrm{max}},\quad n_e = \frac{\psi B}{4\pi e R_\mathrm{max}}
+    j = \frac{c\psi B}{4\pi R_\mathrm{max}},\quad n_e = \frac{\psi B}{4\pi\beta e R_\mathrm{max}}
 \end{equation}
 The flux function for dipole field is simply $f = f_\mathrm{max}\sin^2\theta$. This is relatively simple to compute since one can just integrate the $B$ field flux over the surface up to angle $\theta$.
 
@@ -485,7 +485,7 @@ so we can write the rate as
     \label{eq:64}
     \dot{N}_\mathrm{sc} = \frac{\alpha\Theta c}{4x^2\gamma \lambdabar}\frac{g(y)}{y}
 \end{equation}
-where $\Theta = kT/m_ec^2$, $g(y) = y^3/(e^y - 1)$, and $y = h\omega_\mathrm{res}/kT$, and $\lambdabar$ is the electron Compton wavelength. If we multiply this with the characteristic time which is $t \sim r/c$, then the total number of scattering is huge because of a factor of $R/\lambdabar$ which gives the multiplicity. For typical magnetar parameters this will give about $10^5$.
+where $\Theta = kT/m_ec^2$, $g(y) = y^3/(e^y - 1)$, and $y = h\omega_\mathrm{res}/kT$, and $\lambdabar$ is the electron Compton wavelength $\lambdabar = \hbar/m_ec$. If we multiply this with the characteristic time which is $t \sim r/c$, then the total number of scattering is huge because of a factor of $R/\lambdabar$ which gives the multiplicity. For typical magnetar parameters this will give about $10^5$.
 
 Last question we want to ask is how the momentum changes due to scattering. The momentum change of an electron $\Delta p$ due to scattering in the lab frame is related to the momentum change in the rest frame of the particle $\Delta \tilde{p}$ by $\Delta p = \gamma \Delta \tilde{p}$. In the rest frame of the electron the incoming photon has a well-defined momentum $\hbar\omega_B$ but on average the outgoing photon has zero momentum because it can go in any direction. So on average the momentum that is given to the electron in the rest frame by the photon is
 \begin{equation}
@@ -507,6 +507,105 @@ where $\mu$ is cosine of the angle between the photon coming from the star and t
     \label{eq:67}
     \mathcal{D} = \frac{r}{c}\frac{1}{p}\frac{dp}{dt} \gg 1
 \end{equation}
+
+\subsection{October 12}
+\label{sec:oct-12}
+
+Last time we derived the resonance scattering rate $\dot{N}_\mathrm{sc}$ \eqref{eq:63}. This rate is regulated by the intensity of thermal radiation at the particle position at the resonance frequency. Plugging in the Plank distribution we get equation \eqref{eq:64}, which peaks at the Wien peak where $g(y)/y \sim 1$ at $y \sim 2$. $\Theta \sim 10^{-3}$ is typical for magnetars where the stellar temperature is around $\mathrm{keV}$.
+
+One can estimate the multiplicity of scattered photons by multiplying the rate by a characteristic time, which is the time it takes for a seed particle to cross a characteristic distance where $B$ is not changed by much. We can find (taking $\Delta r\sim r/3$):
+\begin{equation}
+    \label{eq:69}
+    \mathcal{M}_{\gamma}(r)\sim \frac{\Delta r}{c}\dot{N}_\mathrm{sc} \sim \frac{\alpha\Theta^2R_{*}}{12 x \gamma}\frac{R_{*}}{\lambdabar}\frac{g(y)}{y} \sim \frac{10^7}{x\gamma} \gg 1
+\end{equation}
+For typical parameters this multiplicity is very high.
+
+We can also find the drag force due to resonance scattering felt by the electron:
+\begin{equation}
+    \label{eq:70}
+    \mathcal{F} = \dot{N}_\mathrm{sc}\Delta p = \dot{N}_\mathrm{sc}\gamma \Delta \tilde{p}
+\end{equation}
+where $\Delta \tilde{p}$ is the change of momentum in the rest frame of the electron. If the incoming photon angle in the rest frame is $\tilde{\mu}$ then $\Delta \tilde{p} = \tilde{\mu}\hbar\tilde{\omega}/c$. Plugging this in we get
+\begin{equation}
+    \label{eq:71}
+    \mathcal{F} = \frac{\alpha^2}{4x^2}\frac{m_ec^2}{r_e}\Theta^3 \gamma g(y)(\beta_{*} - \beta)
+\end{equation}
+where $\beta_{*} = \mu$ is the incoming photon angle. This formula is applicable when $b \ll 1$. We will talk about the correction to this formula at critical field when pair creation is important.
+
+We can find the drag coefficient which is the ratio of the drag timescale and the time scale of motion, which measures the importance of drag:
+\begin{equation}
+    \label{eq:72}
+    \mathcal{D} = \frac{r}{c}\frac{1}{p}\frac{dp}{dt}
+\end{equation}
+If one finds that $\mathcal{D} \gg 1$, then the drag dominates, and eventually the radiation force will push the particle to the equilibrium velocity $\beta = \beta_{*}$, where $\mathcal{F} = 0$. Around this equilibrium, assuming $\left| \beta - \beta_{*} \right| \ll \beta_{*}$ we can expand and find
+\begin{equation}
+    \label{eq:73}
+    \mathcal{D} = \mathcal{D}_{*} \left( 1 - \frac{p}{p_{*}} \right) = \frac{\alpha^2 R}{4 r_e}\frac{\Theta^3g(y_{*})}{x\gamma_{*}^2} \left( 1 - \frac{p}{p_{*}} \right)
+\end{equation}
+The coefficient $\mathcal{D}_{*}$ can be find to be
+\begin{equation}
+    \label{eq:74}
+    \mathcal{D}_{*} = \frac{4\times 10^4}{x}\frac{g(y_{*})}{\gamma_{*}^2} \left( \frac{kT}{0.5\,\mathrm{keV}} \right)^3
+\end{equation}
+
+One other quantity we are interested in is the optical depth of radiation in the plasma-filled magnetosphere. If we assume that in the magnetosphere where plasma is moving with $\beta = \beta_{*}$ everywhere, we can find that
+\begin{equation}
+    \label{eq:75}
+    \frac{d\tau}{ds} = \sigma_\mathrm{tot} n = n 2\pi^2r_ec\xi(1 - \beta\mu)\delta(\tilde{\omega} - \omega_B)
+\end{equation}
+where $s$ is the path length along the photon trajectory. To carry out the integral we can convert $ds$ to $d(\tilde{\omega} - \omega_B)$
+\begin{equation}
+    \label{eq:76}
+    \delta(\tilde{\omega} - \omega_B)ds \longrightarrow \frac{\delta(\tilde{\omega} - \omega_B)d(\tilde{\omega} - \omega_B)}{\left| \frac{d(\tilde{\omega} - \omega_B}{ds} \right|}
+\end{equation}
+We want to argue that $d\tilde{\omega}/ds = 0$ for dipole field. Note that $\tilde{\omega} = \omega\gamma(1 - \beta\mu)$. When $\beta = \beta_{*}$ we can see that $\tilde{\omega} = \omega / \gamma_{*}$ which is only a function of $\theta$. However photons move in the radial direction along which $\theta$ is constant, we do see that $d\tilde{\omega}/ds = 0$. Therefore we can find
+\begin{equation}
+    \label{eq:77}
+    \tau = \frac{2\pi^2r_ecn\xi(1 - \beta\mu)}{\left| \frac{d}{ds}(\tilde{\omega} - \omega_B) \right|_{\tilde{\omega} = \omega_B}}
+\end{equation}
+Now we specialize to $\beta = \beta_{*}$ and let's estimate the density by using $n = \mathcal{M}j/ec$ and we can get the base number density from equation \eqref{eq:27}. We know that $d\omega_B/ds = -3\omega_B/r$ because $B$ is dipole field. Plug these all in, we have
+\begin{equation}
+    \label{eq:78}
+    \tau = \frac{\pi}{12}\mathcal{M}\psi \frac{\sin^4\theta}{\cos\theta(1 + 3\cos^2\theta)^{1/2}}
+\end{equation}
+The point is that, for small polar angles the magnetosphere is transparent, and for larger angles it is opaque. Another remark is that $\beta_{*} = 0$ at the equator, so the particles come to rest at the equator due to radiation pressure. At the equator, the optical depth is huge, and the radiation will definitely be scattered multiple times, but remarkably the transmission coefficient is around $1/2$. The argument is that, at any given point in the magnetosphere, the optical depth can be formally huge, the photon will be scattered to either direction with equal probability. This is due to the particularity of the resonance scattering process.
+
+Let's look at the scattering process more closely. Consider a photon coming in with energy $E_t$ and scatters with an electron with Lorentz factor $\gamma$. After scattering the photon escapes with energy $E_\mathrm{sc}$. In the rest frame of the electron the photon comes in and goes out with equal energy (in the regime $b\ll 1$)
+\begin{equation}
+    \label{eq:79}
+    \tilde{E}_t = \tilde{E}_\mathrm{sc} = \hbar\omega_B
+\end{equation}
+After scattering due to Lorentz boost we have
+\begin{equation}
+    \label{eq:80}
+    E_\mathrm{sc} = \gamma (1 + \beta\tilde{\mu}_\mathrm{sc})\tilde{E}_\mathrm{sc} = \gamma\frac{1 + \beta\tilde{\mu}_\mathrm{sc}}{1 + \beta\tilde{\mu}}E_t \sim \gamma^2E_t
+\end{equation}
+
+When $b \gtrsim 1$, we need to take into account the recoil of the electron. We derived that the recoil velocity and energy of the electron is (ref. equation \eqref{eq:58})
+\begin{equation}
+    \label{eq:81}
+    \beta_1 = \frac{b}{1 + b},\quad \gamma_1 = \frac{1 + b}{\sqrt{1 + 2b}} = \frac{1 + b}{\epsilon_B}
+\end{equation}
+This is during the first stage of the scattering. After the electron emits another photon, the mean expectation for its final momentum is the same as $\gamma_1$ in the original rest frame. In the lab frame, the final momentum is simply
+\begin{equation}
+    \label{eq:82}
+    \gamma_f = \gamma\gamma_1(1 - \beta\beta_1)
+\end{equation}
+where $\gamma$ and $\beta$ are simply the original electron factors. The energy given to the photon is simply $\gamma - \gamma_f$, which is
+\begin{equation}
+    \label{eq:83}
+    E_\mathrm{sc} = (\gamma - \gamma_f)m_ec^2 = \gamma \left[ 1 - \gamma_1(1 - \beta\beta_1) \right]m_ec^2
+\end{equation}
+In the limit $\gamma \gg 1$, $\gamma_1\ll \gamma$ and $\gamma_1\ll \gamma$, we have
+\begin{equation}
+    \label{eq:84}
+    E_\mathrm{sc} = \gamma m_ec^2 \left( 1 - \frac{1}{\sqrt{1 + 2b}} \right)
+\end{equation}
+This is applicable to cases where $b > 1$. When $b\ll 1$ we can check that it reproduces $E_\mathrm{sc} = \gamma m_ec^2b$. We can see that when $b\ll 1$ the electron loses only a small fraction of its energy, whereas when $b\gg 1$ the electron loses a significant fraction of its energy in one scatter. Since we now have the limit of $E_\mathrm{sc}$ in strong fields, we can just replace $E_\mathrm{sc}$ in the momentum loss formula to get the correction factor for $b>1$.
+
+Remember in the magnetar magnetosphere we have current due to twist of the field lines. We know that the particles extracted from the surface alone will induce huge electric field, which accelerates particles to Lorentz factors $\gamma \gg 1$. When one builds up the voltage, to satisfy the resonance condition we need $\omega_\mathrm{res} \sim \omega_B/\gamma$ so for keV photons we need Lorentz factors of $\gamma \sim 10^3$. On the field lines close to the star $b$ is large, therefore when an electron scatters resonantly it will lose energy rapidly, and the produced pairs will quickly screen the field, so the electric field will be screened. The multiplicity will be of order unity, and voltage drop will be around $\gamma m_ec^2$. On the field lines further away from the star, however, the multiplicity will be much higher and we will talk about this regime next time.
+
+Another nuance to this problem is that photons of particular polarization can split in strong magnetic field. Refer to \href{http://adsabs.harvard.edu/abs/2002ApJ...572L..87U}{(Usov 2002)} for discussions.
 
 
 \end{document}
