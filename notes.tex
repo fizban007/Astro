@@ -666,6 +666,65 @@ The critical rate will be something like $1\,\mathrm{rad/yr}$. It is easier to t
 
 We don't know exactly what is $\Phi_e(f)$, but we have some arguments to see its behavior.
 
+\subsection{October 21}
+\label{sec:oct-21}
+
+\subsubsection{Radiation from a $j$-bundle}
+\label{sec:radiation}
+
+We use the name ``$j$-bundle'' to name a twisted magnetic flux tube which conducts some current $j$. The energy is lost in two different ways, namely particles hitting the surface, and high-energy radiation emitted by the magnetosphere, mainly by the process of resonant scattering. We hope to explain the hard X-ray component of the observed spectrum using magnetospheric emission.
+
+Remember that resonantly scattered photons don't escape the strong field region where $B\gtrsim B_{Q}$. Therefore we are going to focus on resonant scattering at $B<B_Q$ where the theory is simpler. This way we can work out the theory and obtain details of the model down to the spectrum.
+
+We want to understand how particle Lorentz factors evolve and self regulate through resonant scattering. Assuming the particles get accelerated in a gap, after which it starts with $\gamma \sim 1000$. When the field is large, $B\sim 10^{15}\,\mathrm{G}$, the resonance condition requires a higher energy photon than the usual keV photons, which are in the Wien tail of the blackbody spectrum and are exponentially suppressed. Therefore in this regime particles don't decelerate much.
+
+When the particles move further along the magnetic field line, $B$ field will decrease, and the resonance condition becomes more favorable for scattering. When the number density of the resonant photons in the Wien tail becomes large enough, the particles will scatter a photon and reduce its energy. If we plot the evolution of particle $\gamma$ and the $B$ field it sees, we can see the particles move along the graph along a staircase-like line which sits just around the place such that the number density of photons is just enough for resonant cooling, which is around $\gamma = \hbar\omega_B/10 kT$. See figure \ref{fig:deceleration}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{deceleration.png}
+    \caption{Deceleration of a relativistic particle}
+    \label{fig:deceleration}
+\end{figure}
+
+Again the point is that the particle never gets to react with the peak of the blackbody spectrum. It gets down-scattered when it comes close from the Wien peak. It behaves like it is ``surfing'' the blackbody spectrum.
+
+The upscattered photon has energy
+\begin{equation}
+    \label{eq:93}
+    E_\mathrm{sc} = \gamma m_ec^2 \left( 1 - \frac{1}{\sqrt{1 + 2b}} \right)
+\end{equation}
+In strong $B$ it will split if it is in perpendicular polarization, into two photons of parallel polarization. If it is in parallel polarization already it can be converted into a pair of electron and positron if the threshold condition is satisfied:
+\begin{equation}
+    \label{eq:94}
+    E_{\gamma} > E_\mathrm{thr} = \frac{2m_ec^2}{\sin\theta}
+\end{equation}
+where $\theta$ is the angle between photon direction of motion and the local $B$ field. This is because the perpendicular momentum is taken by the $B$ field and in the frame where perpendicular momentum is zero, the exact energy of the photon is $2m_ec^2$. If the photon is above the threshold then the particles will be created with some equal and opposite velocities in the center-of-mass frame, and they might be produced on a higher Landau state as is in the case of pulsar pair cascade. If the local field is larger than $~4B_Q$ there is a range of angles that will give instant conversion, ignoring this threshold.
+
+When $b \gtrsim 0.05$ the photons will almost instantaneously convert to a pair when the threshold energy condition is satisfied, but when $b < 0.05$ it will travel further, and the pair will be produced at a higher Landau state.
+
+Knowing how $\gamma$ evolves, we can find the spectrum of radiation. Let's define $L$ as the radiated power of the outflow. We can find that in the radiative zone where $B < B_Q$
+\begin{equation}
+    \label{eq:95}
+    \frac{dL}{db} = \frac{d}{db} \left( \dot{N}_{sc}\gamma m_ec^2 \right)
+\end{equation}
+In regions where $B > B_Q$ the energy doesn't escape. It's simply reprocessed into more pairs and change the particle energy distribution. In the radiative zone $\dot{N}_{sc}$ is constant, because $\gamma$ evolves along the curve where $\gamma = 100 b$. Therefore this power will be
+\begin{equation}
+    \label{eq:96}
+    \frac{dL}{db} = \mathrm{constant} = \frac{L}{b_0}
+\end{equation}
+where $b_0 \approx 1/4$. We can also find the distribution of power with respect to photon energy
+\begin{equation}
+    \label{eq:97}
+    \frac{dL}{dE} = \frac{dL}{db}\frac{db}{dE} = \frac{L}{b_0} \frac{1}{dE/db}
+\end{equation}
+because we know that $E = \gamma b m_ec^2 = 100b^2m_ec^2$, we can find that
+\begin{equation}
+    \label{eq:98}
+    \frac{dL}{dE} = \frac{L}{b_0}\frac{1}{2\sqrt{100 m_ec^2E}} \propto E^{-1/2}
+\end{equation}
+The situation is very similar to what is called ``fast-cooling'', like the synchrotron cooling in GRBs.
+
 
 \end{document}
 
